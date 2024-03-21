@@ -7,6 +7,7 @@ import Adicionar from './componentes/pages/adicionar';
 import Roupas from './componentes/pages/roupas';
 import Acessorios from './componentes/pages/acessorios';
 import Bonequinhos from './componentes/pages/bonequinhos';
+import Card from './componentes/layout/card';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Router>
         <Header />
         <Container  customClass='minHeight'/>
+        <Card produto="oi"/>
         <Routes>
           <Route exact path="/" element={<PaginaInicial />} />
           <Route exact path="/adicionar" element={<Adicionar />} />
