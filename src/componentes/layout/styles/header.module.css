@@ -2,8 +2,8 @@
     display: flex;
     justify-content: space-between;
     padding: 1em;
-    color: white;
-    background-color: red;
+    color: #c6d6d6;
+    background-color: #77181e;
 }
 
 .lista {
@@ -17,11 +17,11 @@
 }
 
 .item a{
-    color: #FFF;
+    color: #c6d6d6;
     text-decoration: none;
 }
 
 .titulo a{
-    color: #FFF;
+    color: #c6d6d6;
     text-decoration: none;
 }

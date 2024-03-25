@@ -3,10 +3,10 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-    color: white;
+    color: #282832;
   }
   
   html, body, root {
-    background-color: #090A18;
+    background-color: #dee7e7;
     height: 100%;
   }

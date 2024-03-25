@@ -1,6 +1,61 @@
 .Card {
-    border: 2px solid #000;
-    padding: 20px;
-    margin: 10px;
-  }
-  
+  border: 12px solid #282832;
+  padding: 20px;
+  margin: 10px;
+  width: 300px; /* Definindo uma largura fixa para o card */
+}
+
+.imageWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.imagem {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.typeWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.detailsWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.priceWrapper {
+  margin-bottom: 10px;
+}
+.buttonsWrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.buttonsWrapper button {
+  margin: 0px 10px; /* Espaçamento dos botões */
+  padding: 8px 16px; /* Espaçamento interno dos botões */
+  background-color: #a92727; /* Cor de fundo */
+  color: white; /* Cor do texto */
+  border: 2px solid #a92727; /* Borda */
+  border-radius: 4px; /* Bordas arredondadas */
+  font-size: 16px; /* Tamanho da fonte */
+}
+
+.buttonsWrapper button:hover {
+  background-color: #77181e; /* Cor de fundo ao passar o mouse */
+  border-color: #77181e; /* Cor da borda ao passar o mouse */
+  cursor: pointer; /* Cursor ao passar o mouse */
+}
+
+/* Estilos adicionais conforme necessário */
