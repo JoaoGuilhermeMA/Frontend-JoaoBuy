@@ -8,19 +8,54 @@ function Adicionar() {
   const [subtipo, setSubtipo] = useState('');
   const [anime, setAnime] = useState('');
   const [valor, setValor] = useState('');
+  const [urlImagem, setUrlImagem] = useState('');
 
-  const handleSubmit = (e) => {
+  const opcoesSubtipo = {
+    roupas: ['Camiseta', 'Calça', 'Vestido'],
+    acessorios: ['Colar', 'Pulseira', 'Anel'],
+    'Action-Figure': ['Gundam', 'Dragon Ball', 'Naruto']
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     const novoProduto = {
       nome: nome,
-      quantidade: quantidade,
+      quantidade: parseInt(quantidade), // Certifique-se de converter para número
       tipo: tipo,
       subtipo: subtipo,
-      anime: anime,
-      valor: valor
+      animeProduto: anime,
+      precoUnidade: parseFloat(valor), // Certifique-se de converter para número decimal
+      urlFoto: urlImagem  // Adicione a URL da imagem aqui
     };
-    console.log('Novo produto:', novoProduto);
-    // Aqui você pode implementar a lógica para enviar os dados para o backend
+
+    try {
+      const response = await fetch('http://localhost:8080/produtos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(novoProduto)
+      });
+
+      if (response.ok) {
+        // Se o produto for adicionado com sucesso, você pode fazer alguma ação, como limpar o formulário ou exibir uma mensagem de sucesso
+        console.log('Produto adicionado com sucesso!');
+        // Limpar campos do formulário após o envio
+        setNome('');
+        setQuantidade('');
+        setTipo('');
+        setSubtipo('');
+        setAnime('');
+        setValor('');
+        setUrlImagem('');
+      } else {
+        // Se houver algum erro ao adicionar o produto, você pode lidar com isso aqui
+        console.error('Erro ao adicionar produto:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao adicionar produto:', error);
+    }
   };
 
   return (
@@ -37,17 +72,24 @@ function Adicionar() {
         </div>
         <div className={Styles.formGroup}>
           <label>Tipo:</label>
-          <select value={tipo} onChange={(e) => setTipo(e.target.value)} required>
+          <select value={tipo} onChange={(e) => {
+            setTipo(e.target.value);
+            // Limpa o subtipo quando o tipo é alterado
+            setSubtipo('');
+          }} required>
             <option value="">Selecione o tipo</option>
-            <option value="Camiseta">Camiseta</option>
-            <option value="Calça">Calça</option>
+            <option value="roupas">Roupas</option>
+            <option value="acessorios">Acessórios</option>
+            <option value="Action-Figure">Action Figure</option>
           </select>
         </div>
         <div className={Styles.formGroup}>
           <label>Subtipo:</label>
           <select value={subtipo} onChange={(e) => setSubtipo(e.target.value)} required>
             <option value="">Selecione o subtipo</option>
-            {/* Opções de subtipo aqui */}
+            {opcoesSubtipo[tipo] && opcoesSubtipo[tipo].map((opcao, index) => (
+              <option key={index} value={opcao}>{opcao}</option>
+            ))}
           </select>
         </div>
         <div className={Styles.formGroup}>
@@ -57,6 +99,10 @@ function Adicionar() {
         <div className={Styles.formGroup}>
           <label>Valor:</label>
           <input type="number" value={valor} onChange={(e) => setValor(e.target.value)} required />
+        </div>
+        <div className={Styles.formGroup}>
+          <label>URL da Imagem:</label>
+          <input type="text" value={urlImagem} onChange={(e) => setUrlImagem(e.target.value)} required />
         </div>
         <button type="submit" className={Styles.btnSubmit}>Adicionar Produto</button>
       </form>
