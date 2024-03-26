@@ -9,21 +9,24 @@ import Acessorios from './componentes/pages/acessorios';
 import Bonequinhos from './componentes/pages/bonequinhos';
 import DisplayCard from './componentes/layout/displayCard';
 import Login from './componentes/pages/login';
+import Editar from './componentes/pages/editar';
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Header />
-        <Container  customClass='minHeight'>
-        <Routes>
-          <Route exact path="/" element={<PaginaInicial />} />
-          <Route exact path="/adicionar" element={<Adicionar />} />
-          <Route exact path="/roupas" element={<Roupas />} />
-          <Route exact path="/acessorios" element={<Acessorios />} />
-          <Route exact path="/bonequinhos" element={<Bonequinhos />} />
-          <Route exact path="/login" element={<Login />} />
-        </Routes>
+        <Container customClass='minHeight'>
+          <Routes>
+            <Route exact path="/" element={<PaginaInicial />} />
+            <Route exact path="/adicionar" element={<Adicionar />} />
+            <Route exact path="/roupas" element={<Roupas />} />
+            <Route exact path="/acessorios" element={<Acessorios />} />
+            <Route exact path="/bonequinhos" element={<Bonequinhos />} />
+            <Route exact path="/login" element={<Login />} />
+            {/* Ajuste a rota para aceitar o parâmetro dinâmico */}
+            <Route exact path="/editar/:id" element={<Editar />} />
+          </Routes>
         </Container>
         <Footer /> 
       </Router>

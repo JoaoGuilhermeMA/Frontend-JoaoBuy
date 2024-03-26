@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from './styles/card.module.css'; 
+import styles from './styles/card.module.css';
+import { Link } from "react-router-dom";
 import imagem from '../../imagens/imagem.jpg'
 
 function Card({ produto, onExcluir }) {
@@ -28,7 +29,9 @@ function Card({ produto, onExcluir }) {
         </div>
       </div>
       <div className={styles.buttonsWrapper}>
-        <button>Editar</button>
+        <Link to={`/editar/${produto.id}`}>
+          <button>Editar</button>
+        </Link>
         {/* Adiciona o evento de clique ao botão Excluir */}
         <button onClick={handleClickExcluir}>Excluir</button>
       </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Styles from './styles/adicionar.module.css';
+import { Navigate } from 'react-router-dom';
 
 function Adicionar() {
   const [nome, setNome] = useState('');
@@ -8,6 +9,7 @@ function Adicionar() {
   const [anime, setAnime] = useState('');
   const [valor, setValor] = useState('');
   const [urlImagem, setUrlImagem] = useState('');
+  const [redirect, setRedirect] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,15 +33,8 @@ function Adicionar() {
       });
 
       if (response.ok) {
-        // Se o produto for adicionado com sucesso, você pode fazer alguma ação, como limpar o formulário ou exibir uma mensagem de sucesso
-        console.log('Produto adicionado com sucesso!');
-        // Limpar campos do formulário após o envio
-        setNome('');
-        setQuantidade('');
-        setTipo('');
-        setAnime('');
-        setValor('');
-        setUrlImagem('');
+        // Se o produto for adicionado com sucesso, redireciona para a página inicial
+        setRedirect(true);
       } else {
         // Se houver algum erro ao adicionar o produto, você pode lidar com isso aqui
         console.error('Erro ao adicionar produto:', response.statusText);
@@ -48,6 +43,10 @@ function Adicionar() {
       console.error('Erro ao adicionar produto:', error);
     }
   };
+
+  if (redirect) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className={Styles.container}>
