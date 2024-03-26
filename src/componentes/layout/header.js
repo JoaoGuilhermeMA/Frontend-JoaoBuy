@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import Styles from './styles/header.module.css'
+import Styles from './styles/header.module.css';
+import { TiUserAdd } from "react-icons/ti";
 
 function Header() {
     return (
@@ -10,6 +11,7 @@ function Header() {
                 <l1 className={Styles.item}><Link to="/roupas">Roupas</Link></l1>
                 <li className={Styles.item}><Link to="/acessorios">Acessorios</Link></li>
                 <l1 className={Styles.item}><Link to="bonequinhos">Action figures</Link></l1>
+                <li><TiUserAdd className={Styles.person} /></li>
             </ul>
         </nav>
     )
