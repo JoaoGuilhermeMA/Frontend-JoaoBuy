@@ -5,16 +5,9 @@ function Adicionar() {
   const [nome, setNome] = useState('');
   const [quantidade, setQuantidade] = useState('');
   const [tipo, setTipo] = useState('');
-  const [subtipo, setSubtipo] = useState('');
   const [anime, setAnime] = useState('');
   const [valor, setValor] = useState('');
   const [urlImagem, setUrlImagem] = useState('');
-
-  const opcoesSubtipo = {
-    roupas: ['Camiseta', 'Calça', 'Vestido'],
-    acessorios: ['Colar', 'Pulseira', 'Anel'],
-    'Action-Figure': ['Gundam', 'Dragon Ball', 'Naruto']
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,7 +16,6 @@ function Adicionar() {
       nome: nome,
       quantidade: parseInt(quantidade), // Certifique-se de converter para número
       tipo: tipo,
-      subtipo: subtipo,
       animeProduto: anime,
       precoUnidade: parseFloat(valor), // Certifique-se de converter para número decimal
       urlFoto: urlImagem  // Adicione a URL da imagem aqui
@@ -45,7 +37,6 @@ function Adicionar() {
         setNome('');
         setQuantidade('');
         setTipo('');
-        setSubtipo('');
         setAnime('');
         setValor('');
         setUrlImagem('');
@@ -75,21 +66,11 @@ function Adicionar() {
           <select value={tipo} onChange={(e) => {
             setTipo(e.target.value);
             // Limpa o subtipo quando o tipo é alterado
-            setSubtipo('');
           }} required>
             <option value="">Selecione o tipo</option>
             <option value="roupas">Roupas</option>
             <option value="acessorios">Acessórios</option>
             <option value="Action-Figure">Action Figure</option>
-          </select>
-        </div>
-        <div className={Styles.formGroup}>
-          <label>Subtipo:</label>
-          <select value={subtipo} onChange={(e) => setSubtipo(e.target.value)} required>
-            <option value="">Selecione o subtipo</option>
-            {opcoesSubtipo[tipo] && opcoesSubtipo[tipo].map((opcao, index) => (
-              <option key={index} value={opcao}>{opcao}</option>
-            ))}
           </select>
         </div>
         <div className={Styles.formGroup}>

@@ -18,25 +18,22 @@
 
 .infoWrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Elementos dispostos verticalmente */
   margin-bottom: 10px;
 }
 
 .typeWrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Remova display: flex; e justify-content: space-between; */
 }
 
 .detailsWrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 10px; /* Remova display: flex; e justify-content: space-between; */
 }
 
 .priceWrapper {
   margin-bottom: 10px;
 }
+
 .buttonsWrapper {
   display: flex;
   justify-content: flex-end;
